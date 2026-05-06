@@ -1,0 +1,18 @@
+name: Python tests
+
+on: [push, pull_request]   # se déclenche à chaque push et pull request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3   # Récupère le code
+
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Exécuter les tests
+        run: python -m unittest test_mesfonctions.py
